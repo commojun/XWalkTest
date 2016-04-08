@@ -8,7 +8,7 @@ import org.xwalk.core.XWalkView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private XWalkView xWalkWebView;
+    public XWalkView xWalkWebView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,11 +19,13 @@ public class MainActivity extends AppCompatActivity {
         //xWalkWebView.load("http://commojun.com", null);
 
         //端末内のファイルを読み込みたい時には下記のとおりにする．
-        xWalkWebView.load("file:///android_asset/index.html", "");
+        xWalkWebView.load("file:///android_asset/index.html", null);
 
         //ネイティブ側からWeb側へデータを送りたいときはこのようにする．
         //要するに，ネイティブ側から下記のようにJSが実行できるということ．
-        xWalkWebView.evaluateJavascript("var hoge = 'こんにちは！'", null);
+        String hoge = "こんにちは！";
+        xWalkWebView.evaluateJavascript("var hoge = '" + hoge + "';", null);
+
 
         // turn on debugging
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
