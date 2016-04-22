@@ -1,14 +1,39 @@
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        <!--
+        body, input {font-size:2rem;}
+        -->
+    </style>
+</head>
+
 <body>
+<h1>てすと</h1>
 <script language="JavaScript">
-<!--
+    <!--
     if(typeof(hoge)=="undefined"){
-        var hoge = "こんばんは！";
+       var hoge = "こんばんは！";
     }
-    //アプリ側からデータを受け取っていれば，「こんにちは」と表示される
-    document.write(hoge);
+    //アプリ側からデータを受け取っていれば，その内容が表示される
+    document.write("アプリ側からデータを受け取っていれば，その内容が表示される<br><br>");
+    document.write("あいさつ：<b>"+hoge+"</b><br><br>");
     console.log(hoge);
-//-->
+
+    //ネイティブのダイアログを呼び出す
+    function dialog(){
+       if(typeof(android) != "undefined"){
+          var name = document.getElementById("name").value;
+          android.showDialog(name);
+       }
+    }
+    -->
 </script>
+<div>
+    さらに，ネイティブ側にデータを渡すテストをしてみましょう！<br>
+    <input type="text" id="name" value="妖怪ウォッチ" size="8">
+    <input type="button" onclick="dialog();" value="OK">
+</div>
 </body>
 </html>
